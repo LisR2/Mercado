@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153f32">
+  <meta name="description" content="Um mercadinho online acolhedor para simular compras, acompanhar preços e descobrir novidades.">
+  <title>Mercadinho da Vila — seu mercado, pertinho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="topline">Da nossa vizinhança para a sua mesa <span>•</span> entrega fresquinha de verdade</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Mercadinho da Vila, início">
+      <span class="brand-mark">m<span>✳</span></span>
+      <span class="brand-copy">mercadinho <small>DA VILA</small></span>
+    </a>
+    <form class="search" id="search-form" role="search">
+      <span aria-hidden="true">⌕</span>
+      <input id="search-input" type="search" placeholder="O que você está procurando?" aria-label="Buscar produtos">
+      <button type="submit">Buscar</button>
+    </form>
+    <div class="header-actions">
+      <button class="header-action" id="account-button" type="button" aria-label="Entrar ou abrir minha conta">
+        <span class="action-icon">♙</span><span id="account-label">Minha conta</span>
+      </button>
+      <button class="header-action cart-header" id="cart-button" type="button" aria-label="Abrir carrinho">
+        <span class="action-icon">▱</span><span>Sacolinha</span><b id="cart-count" class="cart-count">0</b>
+      </button>
+    </div>
+  </header>
+  <nav class="main-nav" aria-label="Navegação principal">
+    <a href="#produtos">Todos os produtos</a><a href="#produtos" data-category-link="Hortifruti">Hortifruti</a>
+    <a href="#produtos" data-category-link="Padaria">Padaria</a><a href="#produtos" data-category-link="Laticínios">Laticínios</a>
+    <a href="#ofertas">Ofertas da semana</a><a href="#novidades">Novidades</a><a href="#suporte">Fale com a gente</a>
+  </nav>
+  <main>
+    <section class="promo-carousel" aria-label="Ofertas e cupons da semana">
+      <div class="promo-track" id="promo-track" aria-live="polite"></div>
+      <button class="promo-arrow promo-prev" id="promo-prev" type="button" aria-label="Oferta anterior">‹</button>
+      <button class="promo-arrow promo-next" id="promo-next" type="button" aria-label="Próxima oferta">›</button>
+      <div class="promo-dots" id="promo-dots" aria-label="Escolher oferta"></div>
+    </section>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="live-dot"></span> SEU MERCADINHO DE TODO DIA</span>
+        <h1>Coisa boa é ter<br>o mercado <em>pertinho.</em></h1>
+        <p>Frutas fresquinhas, pão quentinho e tudo o que faz bem. Escolhido com cuidado, do nosso jeito.</p>
+        <a class="button button-green" href="#produtos">Encontre seus favoritos <span aria-hidden="true">↗</span></a>
+        <div class="hero-note"><span>❋</span> Aqui, cada escolha tem um pouquinho de carinho.</div>
+      </div>
+      <div class="hero-art" aria-label="Ilustração de uma cesta de compras com produtos frescos" role="img">
+        <div class="sun-disc"></div>
+        <span class="float float-apple">🍎</span><span class="float float-citrus">🍊</span>
+        <span class="float float-leaf">🌿</span><span class="float float-bread">🥖</span>
+        <div class="basket"><span>🥬</span><span>🥕</span><span>🥑</span><span>🌼</span></div>
+        <div class="basket-base"></div>
+        <div class="sticker">fresquinho<br><b>todo dia!</b></div>
+        <span class="sparkle sparkle-one">✳</span><span class="sparkle sparkle-two">✴</span>
+      </div>
+      <div class="delivery-pill"><span>🛵</span><div><b>Comprou, chegou!</b><small>Entrega cuidadosa na sua porta</small></div></div>
+    </section>
+
+    <section class="benefits" aria-label="Vantagens do mercadinho">
+      <div><span class="benefit-icon">✿</span><p><b>Fresquinho de verdade</b><small>Todo dia, direto pra você</small></p></div>
+      <div><span class="benefit-icon">♡</span><p><b>Feito com carinho</b><small>Escolhido como em casa</small></p></div>
+      <div><span class="benefit-icon">⌁</span><p><b>Pertinho de você</b><small>Entrega na sua vizinhança</small></p></div>
+      <div><span class="benefit-icon">✳</span><p><b>Preço justo, sempre</b><small>Qualidade que cabe na sacola</small></p></div>
+    </section>
+
+    <section class="products-section" id="produtos">
+      <div class="section-heading">
+        <div><span class="eyebrow">COMPRINHAS COM GOSTO DE CASA</span><h2>Um pouquinho de tudo <span>♡</span></h2></div>
+        <p id="products-description">Escolha com calma, a gente separa com carinho.</p>
+      </div>
+      <div class="filters">
+        <div class="category-filters" id="category-filters" aria-label="Filtrar por categoria"></div>
+        <label class="sort-label">Ordenar por
+          <select id="sort-select" aria-label="Ordenar produtos"><option value="popular">Mais queridos</option><option value="price-low">Menor preço</option><option value="price-high">Maior preço</option><option value="name">Nome</option></select>
+        </label>
+      </div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      <p class="empty-message" id="empty-products" hidden>Nenhum produto encontrado. Tente outra busca ou categoria. 🌱</p>
+    </section>
+
+    <section class="offer-banner" id="ofertas">
+      <span class="offer-illustration">🍓</span>
+      <div><span class="eyebrow">UM MIMO PRA SUA SEMANA</span><h2>Pequenos preços,<br>grandes momentos.</h2><p>Tem novidade e oferta fresquinha esperando por você.</p></div>
+      <a class="button button-light" href="#produtos">Ver as ofertas <span aria-hidden="true">↗</span></a>
+      <span class="offer-deco">✳</span>
+    </section>
+
+    <section class="newsletter-section" id="novidades">
+      <div class="newsletter-icon">✉</div>
+      <div><span class="eyebrow">BILHETINHO DA VILA</span><h2>Novidades fresquinhas,<br>direto na sua caixa de entrada.</h2><p>Receba novidades, ofertas e receitas da estação. Sem pressa, sem spam.</p></div>
+      <form class="newsletter-form" id="newsletter-form"><label class="visually-hidden" for="newsletter-email">Seu e-mail</label><input id="newsletter-email" name="email" type="email" placeholder="Seu melhor e-mail" required><button type="submit" class="button button-green">Quero receber <span aria-hidden="true">↗</span></button><span class="form-message" id="newsletter-message" aria-live="polite"></span></form>
+    </section>
+
+    <section class="support-section" id="suporte">
+      <div><span class="eyebrow">PODE CONTAR COM A GENTE</span><h2>Precisou? <em>Estamos por perto.</em></h2><p>Uma dúvida, uma ideia ou só um oi? Mande uma mensagem — nossa equipe responde com carinho.</p><div class="support-hours"><span>☀</span> Seg–sáb, das 8h às 18h</div></div>
+      <form class="support-form" id="support-form"><div class="support-fields"><label>Seu nome<input name="name" autocomplete="name" required minlength="2" placeholder="Como podemos te chamar?"></label><label>Seu e-mail<input name="email" type="email" autocomplete="email" required placeholder="voce@email.com"></label></div><label>Sua mensagem<textarea name="message" rows="3" required minlength="10" maxlength="2000" placeholder="Escreva pra gente..."></textarea></label><div class="support-submit"><button class="button button-green" type="submit">Enviar mensagem <span aria-hidden="true">↗</span></button><span class="form-message" id="support-message" aria-live="polite"></span></div></form>
+    </section>
+  </main>
+  <footer class="footer"><a class="brand footer-brand" href="#"><span class="brand-mark">m<span>✳</span></span><span class="brand-copy">mercadinho <small>DA VILA</small></span></a><p>Feito com carinho, para quem é de casa. ♡</p><span>© 2025 Mercadinho da Vila <span class="demo-label">simulador demonstrativo</span></span></footer>
+
+  <nav class="floating-quick-actions" id="floating-quick-actions" aria-label="Atalhos rápidos">
+    <button class="floating-action" id="floating-wishlist-button" type="button" aria-label="Abrir meus favoritos">
+      <span class="floating-action-icon" aria-hidden="true">♡</span>
+      <span class="floating-action-label">Favoritos</span>
+      <span class="floating-action-count" id="floating-wishlist-count" aria-live="polite">0</span>
+    </button>
+    <button class="floating-action" id="floating-cart-button" type="button" aria-label="Abrir minha sacolinha">
+      <span class="floating-action-icon" aria-hidden="true">▱</span>
+      <span class="floating-action-label">Sacolinha</span>
+      <span class="floating-action-count" id="floating-cart-count" aria-live="polite">0</span>
+    </button>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="overlay" id="overlay" hidden>
+    <section class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <div class="drawer-header"><div><span class="eyebrow" id="drawer-eyebrow">QUE BOM TE VER!</span><h2 id="drawer-title"></h2></div><button class="icon-button" id="drawer-close" type="button" aria-label="Fechar">×</button></div>
+      <div class="drawer-body" id="drawer-body"></div>
+    </section>
+  </div>
+</body>
+</html>
