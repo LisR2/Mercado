@@ -1,0 +1,14 @@
+{
+  "name": "mercadinho-simulado",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simulador educativo de compras em supermercado",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
